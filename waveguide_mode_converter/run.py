@@ -58,9 +58,8 @@ for filepath in sorted(args.file):
     reflection_dB_worst = np.max(s_params_dB[:, INPUT_PORT_IDX])
     transmission_dB_worst = np.min(s_params_dB[:, OUTPUT_PORT_IDX])
 
-    length_scale = imageruler.minimum_length(
-        model.density(design),
-        tuple(v * params.resolution.to_value(u.nm) for v in model.shape))
+    binary_design = model.density(design) > 0.5
+    length_scale = imageruler.minimum_length_scale(binary_design)
 
     print(
         f'{os.path.basename(filepath)}, {length_scale}, {reflection_dB_worst:.2f}, {transmission_dB_worst:.2f}'

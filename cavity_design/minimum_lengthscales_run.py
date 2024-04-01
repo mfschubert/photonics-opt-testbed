@@ -13,5 +13,6 @@ for path in ['Mo/', 'Göktuğ/']:
         file_name = str(file)
         if file_name[-3:] == 'csv':
             design_pattern = np.genfromtxt(path+file_name, delimiter=',')
-            solid_mls, void_mls = imageruler.minimum_length_solid_void(design_pattern, design_size)
+            binary_design_pattern = design_pattern > 0.5
+            solid_mls, void_mls = imageruler.minimum_length_scale(binary_design_pattern)
             print(path+file_name, solid_mls, void_mls, min(solid_mls, void_mls))
