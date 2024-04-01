@@ -12,5 +12,6 @@ design_size = (1, 10.2)
 for file_name in ['Design_Dnum_2.csv', 'HigRes_DesMatch_Opt_Dnum_2.csv']:  
     design_pattern = np.loadtxt(path+file_name, delimiter=',')
 
-    solid_mls, void_mls = imageruler.minimum_length_scale(design_pattern, periodic=(True, True))
+    binary_design_pattern = design_pattern > 0.5
+    solid_mls, void_mls = imageruler.minimum_length_scale(binary_design_pattern, periodic=(True, True))
     print(file_name, solid_mls, void_mls, min(solid_mls, void_mls))
