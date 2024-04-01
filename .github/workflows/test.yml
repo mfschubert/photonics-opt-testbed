@@ -40,6 +40,12 @@ jobs:
           python minimum_lengthscales_run.py
           cd ..
 
+      - name: slow_light_waveguide
+        run: |
+          cd slow_light_waveguide
+          python minimum_lengthscales_run.py
+          cd ..
+
       - name: waveguide_mode_converter
         run: |
           cd waveguide_mode_converter
