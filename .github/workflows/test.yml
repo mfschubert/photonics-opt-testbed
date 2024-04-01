@@ -36,7 +36,7 @@ jobs:
 
       - name: RGB_metalens
         run: |
-          cd RGB_Metalens
+          cd RGB_metalens
           python minimum_lengthscales_run.py
           cd ..
 
